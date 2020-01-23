@@ -52,6 +52,11 @@ flag lua_32bits
   manual:              True
   description:         Compile Lua with -DLUA_32BITS
 
+flag lua-bit32
+  default:             False
+  manual:              True
+  description:         Compile Lua with -DLUA_COMPAT_BITLIB
+
 flag allow-unsafe-gc
   default:             True
   manual:              True
@@ -178,6 +183,9 @@ library
 
   if flag(lua_32bits)
     cc-options:          -DLUA_32BITS
+
+  if flag(lua-bit32)
+    cc-options:          -DLUA_COMPAT_BITLIB
 
   if flag(apicheck)
     cc-options:          -DLUA_USE_APICHECK
